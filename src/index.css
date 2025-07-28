@@ -1,0 +1,8 @@
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: all;
+}
+
+html, body {
+  transition: background-color 0.7s ease, color 0.7s ease;
+}
