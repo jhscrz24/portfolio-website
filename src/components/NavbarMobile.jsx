@@ -20,7 +20,7 @@ const NavbarMobile = () => {
 
   return (
     <div className="md:hidden">
-      <div className="tooltip rounded-full bg-base-200 mx-auto justify-center w-13 h-13 fixed bottom-4 right-4 mb-30 z-50 shadow-lg" data-tip="Resume">
+      <div className="tooltip rounded-full bg-base-200 mx-auto justify-center w-13 h-13 fixed bottom-4 right-4 mb-32 z-50 shadow-lg" data-tip="Resume">
         <a href="" className="menu menu-md flex items-center justify-center w-13 h-13 rounded-full">
           <FileUser />
         </a>

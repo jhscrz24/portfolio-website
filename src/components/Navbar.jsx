@@ -19,13 +19,16 @@ function Navbar() {
   
   return (
     <>
-      <div className="hidden md:flex fixed bottom-4 left-1/2 transform -translate-x-1/2 justify-center items-center gap-2 z-50 mb-5">
-        <div className="tooltip rounded-full bg-base-200 mx-auto justify-center w-13 h-13 shadow-lg" data-tip="View Resume">
-          <a href="" className="menu menu-md flex items-center justify-center w-13 h-13 mx-auto rounded-full">
+      <div className="hidden md:flex fixed bottom-4 left-1/2 transform -translate-x-1/2 justify-center items-center gap-5 z-50 mb-5">
+        <div 
+          className="tooltip rounded-full bg-base-200/30 backdrop-blur-lg mx-auto justify-center w-13 h-13 shadow-lg " 
+          data-tip="View Resume"
+        >
+          <a href="" className="menu menu-md flex items-center justify-center w-12 h-12 mx-auto rounded-full">
             <FileUser />
           </a>
         </div>
-        <ul className="menu menu-horizontal bg-base-200 rounded-full w-80 gap-4 mx-auto justify-center shadow-2xl">
+        <ul className="menu menu-horizontal bg-base-200/30 backdrop-blur-lg rounded-full w-80 gap-4 mx-auto justify-center shadow-lg">
           <li>
             <a
               href="#hero"

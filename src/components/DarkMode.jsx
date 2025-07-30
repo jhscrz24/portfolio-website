@@ -19,7 +19,7 @@ function DarkMode() {
   };
 
   return (
-    <div className="bg-base-200 rounded-full shadow-lg w-13 h-13 flex items-center justify-center">
+    <div className="rounded-full bg-base-200/30 backdrop-blur-lg shadow-lg w-13 h-13 flex items-center justify-center">
         <label className="swap swap-rotate">
             <input
             type="checkbox"

@@ -1,12 +1,25 @@
-import React from 'react'
-
 export default function About() {
   return (
     <section id="about" className="p-10 bg-base-200">
-        <h2 className="text-3xl font-bold mb-4">About Me</h2>
-        <p>
-        I'm a developer who enjoys working with the MERN stack and building end-to-end solutions...
-        </p>
+        <div className="hero bg-base-200 min-h-screen">
+          <div className="hero-content flex-col lg:flex-row-reverse gap-20">
+            <div className="lg:w-1/2">
+                <h4 className='text-lg font-medium text-primary transition-all duration-300 animate-fade-in-down'>About Me</h4>
+                <h1 className="text-5xl font-bold transition-all duration-300 hover:text-secondary animate-fade-in-down delay-200">Get To Know Me</h1>
+                <p className="py-6 transition-all duration-300 animate-fade-in-up delay-400">
+                    Hi! I'm <span className="font-medium">Jehus</span>, 23 years old and I graduated from <span className="font-medium">Laguna State Polytechnic University - San Pablo City Campus</span> with a <span className="font-medium">Bachelor's Degree in Information Technology Specialized in Web and Mobile Application Development.</span>
+                </p>
+                <p className="transition-all duration-300 animate-fade-in-up delay-600">
+                    I've always been passionate about <span className="font-medium">coding and designing applications</span>, which is why im excited to work in this field. I believe my background in <span className="font-medium">Information Technology has tought me how to work well with people, handle different personalities, and how to work well under pressure.</span>
+                </p>
+            </div>
+            <img
+              src="public/images/about.png"
+              alt="About Me"
+              className="w-full max-w-sm rounded-xl border-15 shadow-lg transform transition-transform duration-500 hover:scale-105"
+            />
+          </div>
+        </div>
     </section>
   )
 }
