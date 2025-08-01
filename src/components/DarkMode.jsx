@@ -2,16 +2,16 @@ import { useEffect, useState } from 'react';
 import { Moon, Sun } from 'lucide-react';
 
 function DarkMode() {
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState('dark');
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme') || 'light';
+    const savedTheme = localStorage.getItem('theme') || 'dark';
     setTheme(savedTheme);
     document.documentElement.setAttribute('data-theme', savedTheme);
   }, []);
 
   const handleThemeChange = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
+    const newTheme = theme === 'dark' ? 'light' : 'dark';
     setTheme(newTheme);
     document.documentElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
@@ -23,11 +23,11 @@ function DarkMode() {
         <label className="swap swap-rotate">
             <input
             type="checkbox"
-            checked={theme === 'dark'}
+            checked={theme === 'light'}
             onChange={handleThemeChange}
             />
-            <Sun className="swap-on rounded-full" />
-            <Moon className="swap-off" />
+            <Moon className="swap-on rounded-full" />
+            <Sun className="swap-off" />
         </label>
     </div>
   );

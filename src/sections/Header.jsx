@@ -12,7 +12,11 @@ function Header() {
                 </div>
                 <div className="flex items-center gap-2">
                     <Mail size={16} />
-                    <span>jehuscoroza24@gmail.com</span>
+                    
+                    <a 
+                    href="mailto:jehuscoroza24@gmail.com" 
+                    className="hover:underline"
+                  ><span>jehuscoroza24@gmail.com</span></a>
                 </div>
                 <div className="flex items-center gap-2">
                     <Phone size={16} />
@@ -23,16 +27,18 @@ function Header() {
             {/* Right - Social Links */}
             <div className="flex gap-5">
             <a 
-                href="#" 
+                href="https://github.com/jhscrz24" 
                 className="hover:text-gray-400 transition-colors"
                 aria-label="GitHub"
+                target="_blank"
             >
                 <Github size={20} />
             </a>
             <a 
-                href="#" 
+                href="https://www.linkedin.com/in/jehus-coroza-0b808833a/" 
                 className="hover:text-gray-400 transition-colors"
                 aria-label="LinkedIn"
+                target="_blank"
             >
                 <Linkedin size={20} />
             </a>
