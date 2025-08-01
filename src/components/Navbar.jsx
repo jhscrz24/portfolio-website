@@ -21,7 +21,7 @@ function Navbar() {
     <>
       <div className="hidden md:flex fixed bottom-4 left-1/2 transform -translate-x-1/2 justify-center items-center gap-5 z-50 mb-5">
         <div 
-          className="tooltip rounded-full bg-base-200/30 backdrop-blur-lg mx-auto justify-center w-13 h-13 shadow-lg " 
+          className="tooltip rounded-full bg-base-200/30 backdrop-blur-lg mx-auto justify-center w-13 h-13 shadow-lg" 
           data-tip="View Resume"
         >
           <a href="" className="menu menu-md flex items-center justify-center w-12 h-12 mx-auto rounded-full">
@@ -44,7 +44,7 @@ function Navbar() {
               href="#about"
               onClick={() => setActiveNav('#about')}
               className={`tooltip rounded-full ${activeNav === '#about' ? 'bg-gray-600 text-white' : ''}`}
-              data-tip="About Me"
+              data-tip="About"
             >
               <UserSearch />
             </a>
@@ -54,7 +54,7 @@ function Navbar() {
               href="#skills"
               onClick={() => setActiveNav('#skills')}
               className={`tooltip rounded-full ${activeNav === '#skills' ? 'bg-gray-600 text-white' : ''}`}
-              data-tip="My Skills"
+              data-tip="Skills and Services"
             >
               <Library />
             </a>

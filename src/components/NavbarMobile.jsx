@@ -20,7 +20,7 @@ const NavbarMobile = () => {
 
   return (
     <div className="md:hidden">
-      <div className="tooltip rounded-full bg-base-200 mx-auto justify-center w-13 h-13 fixed bottom-4 right-4 mb-32 z-50 shadow-lg" data-tip="Resume">
+      <div className="tooltip rounded-full bg-base-200/30 backdrop-blur-lg mx-auto justify-center w-13 h-13 fixed bottom-4 right-4 mb-32 z-50 shadow-lg" data-tip="Resume">
         <a href="" className="menu menu-md flex items-center justify-center w-13 h-13 rounded-full">
           <FileUser />
         </a>
@@ -36,7 +36,7 @@ const NavbarMobile = () => {
 
         <a href="#about" onClick={() => setActiveNav('#about')} className={activeNav === '#about' ? 'dock-active' : ''}>
           <UserSearch />
-          <span className="dock-label mb-2">About Me</span>
+          <span className="dock-label mb-2">About</span>
         </a>
 
         <a href="#skills" onClick={() => setActiveNav('#skills')} className={activeNav === '#skills' ? 'dock-active' : ''}>

@@ -2,19 +2,19 @@ import { Github, Linkedin, Mail, MapPin, Phone } from "lucide-react";
 
 function Header() {
   return (
-    <header className="bg-base-100 shadow-md hidden md:block">
+    <header className="shadow-lg hidden md:block">
         <div className="container mx-auto px-15 py-3 flex flex-col md:flex-row items-center justify-between gap-3">
             {/* Left - Contact Info */}
             <div className="flex flex-wrap gap-5 text-sm">
-                <div className="flex items-center gap-1">
+                <div className="flex items-center gap-2">
                     <MapPin size={16} />
                     <span>Liliw, Laguna, Philippines</span>
                 </div>
-                <div className="flex items-center gap-1">
+                <div className="flex items-center gap-2">
                     <Mail size={16} />
                     <span>jehuscoroza24@gmail.com</span>
                 </div>
-                <div className="flex items-center gap-1">
+                <div className="flex items-center gap-2">
                     <Phone size={16} />
                     <span>+63 963 327 0142</span>
                 </div>
