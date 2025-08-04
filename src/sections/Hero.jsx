@@ -58,13 +58,8 @@ export default function Hero() {
               grow and support team success.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto animate-fade-in-up transition-all duration-500 delay-600">
-              <a href="#contact">
-                <button className="btn btn-primary w-full sm:w-auto transform transition-transform duration-300 hover:scale-105 active:scale-95">
-                  Contact Me
-                </button>
-              </a>
               <a href="/Coroza_Jehus_Resume.pdf" target="_blank" rel="noopener noreferrer">
-                <button className="btn btn-secondary w-full sm:w-auto transform transition-transform duration-300 hover:scale-105 active:scale-95">
+                <button className="btn btn-info text-white w-30 md:w-full sm:w-auto transform transition-transform duration-300 hover:scale-105 active:scale-95">
                   View Resume
                 </button>
               </a>

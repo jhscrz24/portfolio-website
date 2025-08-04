@@ -7,11 +7,11 @@ function Header() {
             {/* Left - Contact Info */}
             <div className="flex flex-wrap gap-5 text-sm">
                 <div className="flex items-center gap-2">
-                    <MapPin size={16} />
+                    <MapPin size={16} color="#00bafe" />
                     <span>Liliw, Laguna, Philippines</span>
                 </div>
                 <div className="flex items-center gap-2">
-                    <Mail size={16} />
+                    <Mail size={16} color="#00bafe" />
                     
                     <a 
                     href="mailto:jehuscoroza24@gmail.com" 
@@ -19,7 +19,7 @@ function Header() {
                   ><span>jehuscoroza24@gmail.com</span></a>
                 </div>
                 <div className="flex items-center gap-2">
-                    <Phone size={16} />
+                    <Phone size={16} color="#00bafe" />
                     <span>+63 963 327 0142</span>
                 </div>
             </div>

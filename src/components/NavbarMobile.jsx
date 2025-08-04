@@ -1,21 +1,33 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { House, UserSearch, Library, FolderOpenDot, Contact, FileUser } from 'lucide-react';
 import DarkMode from './DarkMode';
 
 const NavbarMobile = () => {
   const [activeNav, setActiveNav] = useState('#hero');
   const [isVisible, setIsVisible] = useState(false);
+  const observer = useRef(null);
 
   useEffect(() => {
-    const handleHashChange = () => {
-      setActiveNav(window.location.hash || '#hero');
-    };
+    observer.current = new IntersectionObserver((entries) => {
+      const visibleSection = entries.find((entry) => entry.isIntersecting)?.target;
+      if (visibleSection) {
+        setActiveNav(`#${visibleSection.id}`);
+      }
+    }, { threshold: 0.5 });
 
-    window.addEventListener('hashchange', handleHashChange);
-    handleHashChange(); 
+    const sections = document.querySelectorAll('section');
+    sections.forEach((section) => {
+      if (observer.current) {
+        observer.current.observe(section);
+      }
+    });
 
     return () => {
-      window.removeEventListener('hashchange', handleHashChange);
+      sections.forEach((section) => {
+        if (observer.current) {
+          observer.current.unobserve(section);
+        }
+      });
     };
   }, []);
 
@@ -32,11 +44,18 @@ const NavbarMobile = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleNavClick = (nav) => {
+    const section = document.querySelector(nav);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="md:hidden">
       <div
-        className={`tooltip rounded-full bg-base-200/30 backdrop-blur-lg mx-auto justify-center w-12 h-12 fixed bottom-4 right-4 mb-48 z-50 shadow-lg transition-opacity duration-300 ${
-          isVisible ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        className={`tooltip rounded-full mx-auto justify-center items-center w-13 h-13 fixed bottom-4 right-4 mb-48 z-50 shadow-lg transition-all duration-500 ease-in-out bg-blue-950/40 backdrop-blur-lg border border-white/20 text-white ${
+          isVisible ? "opacity-100 pointer-events-auto transform scale-100" : "opacity-0 pointer-events-none transform scale-50"
         }`}
         data-tip="Resume"
       >
@@ -50,36 +69,36 @@ const NavbarMobile = () => {
         </a>
       </div>
       <div
-        className={`fixed bottom-4 right-4 mb-32 z-50 transition-opacity duration-300 ${
-          isVisible ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        className={`fixed bottom-4 right-4 mb-32 z-50 transition-all duration-500 ease-in-out ${
+          isVisible ? "opacity-100 pointer-events-auto transform scale-100" : "opacity-0 pointer-events-none transform scale-50"
         }`}
       >
         <DarkMode />
       </div>
       <div className="dock flex">
-        <a href="#hero" onClick={() => setActiveNav('#hero')} className={activeNav === '#hero' ? 'dock-active' : ''}>
+        <a href="#hero" onClick={(e) => { e.preventDefault(); handleNavClick('#hero'); }} className={`transform transition-all duration-300 hover:scale-110 ${activeNav === '#hero' ? 'dock-active' : ''}`}>
           <House />
-          <span className="dock-label mb-2">Home</span>
+          <span className="dock-label mb-2 transition-opacity duration-300">Home</span>
         </a>
 
-        <a href="#about" onClick={() => setActiveNav('#about')} className={activeNav === '#about' ? 'dock-active' : ''}>
+        <a href="#about" onClick={(e) => { e.preventDefault(); handleNavClick('#about'); }} className={`transform transition-all duration-300 hover:scale-110 ${activeNav === '#about' ? 'dock-active' : ''}`}>
           <UserSearch />
-          <span className="dock-label mb-2">About</span>
+          <span className="dock-label mb-2 transition-opacity duration-300">About</span>
         </a>
 
-        <a href="#skills" onClick={() => setActiveNav('#skills')} className={activeNav === '#skills' ? 'dock-active' : ''}>
+        <a href="#skills" onClick={(e) => { e.preventDefault(); handleNavClick('#skills'); }} className={`transform transition-all duration-300 hover:scale-110 ${activeNav === '#skills' ? 'dock-active' : ''}`}>
           <Library />
-          <span className="dock-label mb-2">Skills</span>
+          <span className="dock-label mb-2 transition-opacity duration-300">Skills</span>
         </a>
 
-        <a href="#projects" onClick={() => setActiveNav('#projects')} className={activeNav === '#projects' ? 'dock-active' : ''}>
+        <a href="#projects" onClick={(e) => { e.preventDefault(); handleNavClick('#projects'); }} className={`transform transition-all duration-300 hover:scale-110 ${activeNav === '#projects' ? 'dock-active' : ''}`}>
           <FolderOpenDot />
-          <span className="dock-label mb-2">Projects</span>
+          <span className="dock-label mb-2 transition-opacity duration-300">Projects</span>
         </a>
 
-        <a href="#contact" onClick={() => setActiveNav('#contact')} className={activeNav === '#contact' ? 'dock-active' : ''}>
+        <a href="#contact" onClick={(e) => { e.preventDefault(); handleNavClick('#contact'); }} className={`transform transition-all duration-300 hover:scale-110 ${activeNav === '#contact' ? 'dock-active' : ''}`}>
           <Contact />
-          <span className="dock-label mb-2">Contact</span>
+          <span className="dock-label mb-2 transition-opacity duration-300">Contact</span>
         </a>
       </div>
     </div>

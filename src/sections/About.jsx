@@ -4,8 +4,13 @@ export default function About() {
         <div className="hero bg-base-200 min-h-screen">
           <div className="hero-content flex-col lg:flex-row-reverse gap-20">
             <div className="lg:w-1/2">
-                <h4 className='text-lg font-medium text-primary transition-all duration-300 animate-fade-in-down'>About Me</h4>
-                <h1 className="text-4xl md:text-5xl font-bold transition-all duration-300 hover:text-secondary animate-fade-in-down delay-200">Get To Know Me</h1>
+                <img
+                  src="/images/about.png"
+                  alt="About Me"
+                  className="md:hidden mb-8 w-full max-w-sm rounded-xl border-15 text-white shadow-2xl transform transition-transform duration-500 hover:scale-105"
+                />
+                <h4 className='text-lg font-medium text-info transition-all duration-300 animate-fade-in-down'>About Me</h4>
+                <h1 className="text-4xl md:text-5xl font-bold transition-all duration-300 hover:text-info animate-fade-in-down delay-200">Get To Know Me</h1>
                 <p className="py-6 transition-all duration-300 animate-fade-in-up delay-400">
                     Hi! I'm <span className="font-medium">Jehus</span>, 23 years old and I graduated from <span className="font-medium">Laguna State Polytechnic University - San Pablo City Campus</span> with a <span className="font-medium">Bachelor's Degree in Information Technology Specialized in Web and Mobile Application Development.</span>
                 </p>
@@ -20,8 +25,8 @@ export default function About() {
                       <div className="collapse-content flex items-center gap-3">
                         <img src="/images/lspu-logo.png" alt="lspu-logo" className="w-15 mx-5" />
                         <div>
-                          <h1 className="font-bold text-md">Laguna State Polytechnic University <div className="badge badge-info">San Pablo City Campus</div></h1>
-                          <p className="italic text-sm text-gray-500">2021 - 2025</p>
+                          <h1 className="font-bold text-md mb-1">Laguna State Polytechnic University <div className="badge badge-info">San Pablo City Campus</div></h1>
+                          <p className="italic text-sm text-gray-500 mb-1">2021 - 2025</p>
                           <p className="text-sm text-gray-500">Bachelor of Science in Information Technology</p>
                           <p className="text-sm text-gray-500">Specialized in Web and Mobile Application Development</p>
                         </div>
@@ -30,8 +35,8 @@ export default function About() {
                     <div className="collapse collapse-arrow bg-base-100 border border-base-300">
                       <input type="radio" name="my-accordion-2" defaultChecked />
                       <div className="collapse-title font-semibold">Work Experience</div>
-                      <div className="collapse-content flex items-center gap-3">
-                        <img src="/images/gleent-logo.png" alt="gleent-logo" className="w-15 mx-5 rounded-full" />
+                      <div className="collapse-content flex gap-3">
+                        <img src="/images/gleent-logo.png" alt="gleent-logo" className="w-15 h-15 mx-5 rounded-full" />
                         <div>
                           <h1 className="font-bold text-md">Gleent Inc.</h1>
                           <p className="italic text-sm text-gray-500 mb-2">Laravel Frontend Intern (2025)</p>
@@ -44,7 +49,7 @@ export default function About() {
             <img
               src="/images/about.png"
               alt="About Me"
-              className="w-full max-w-sm rounded-xl border-15 shadow-lg transform transition-transform duration-500 hover:scale-105"
+              className="hidden md:block w-full max-w-sm rounded-xl border-15 text-white shadow-2xl transform transition-transform duration-500 hover:scale-105"
             />
           </div>
         </div>

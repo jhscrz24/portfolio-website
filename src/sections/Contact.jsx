@@ -33,10 +33,10 @@ export default function Contact() {
           <div className="flex flex-col md:flex-row gap-12 max-w-7xl w-full">
             {/* Left - Contact Info */}
             <div className="w-full md:w-2/3">
-              <h4 className='text-lg font-medium text-primary transition-all duration-300 animate-fade-in-down'>
+              <h4 className='text-lg font-medium text-info transition-all duration-300 animate-fade-in-down'>
                 Contact Me
               </h4>
-              <h1 className="text-4xl md:text-5xl font-bold transition-all duration-300 hover:text-secondary animate-fade-in-down delay-200">
+              <h1 className="text-4xl md:text-5xl font-bold transition-all duration-300 hover:text-info animate-fade-in-down delay-200">
                 Get In Touch
               </h1>
               <p className="py-6 transition-all duration-300 animate-fade-in-up delay-400">
@@ -45,7 +45,7 @@ export default function Contact() {
                 You can reach me by email or simply use the contact form. I’d be happy to connect with you!
               </p>
               <div className="flex md:justify-start transition-all duration-300 animate-fade-in-up delay-400">
-                <div className="bg-base-200 w-16 h-16 flex justify-center items-center">
+                <div className="bg-base-200 w-16 h-16 flex justify-center items-center shadow-2xl">
                   <AtSign className="w-8 h-8" />
                 </div>
                 <div className="ml-4">
@@ -65,7 +65,7 @@ export default function Contact() {
                 public key - IFYMCQSiaSxmUUSg_
                 template id - template_t8j6kwf
             */}
-            <div className="w-full bg-base-200 p-10">
+            <div className="w-full bg-base-200 p-10 shadow-2xl">
               <form ref={form} onSubmit={sendEmail} className="space-y-4 mx-auto md:mx-0">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <input
@@ -89,7 +89,7 @@ export default function Contact() {
                   className="textarea textarea-bordered w-full h-40"
                   required
                 ></textarea>
-                <button type="submit" className="btn btn-primary w-full">
+                <button type="submit" className="btn btn-info text-white w-full">
                   Send Message
                 </button>
               </form>

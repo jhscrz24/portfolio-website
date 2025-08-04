@@ -32,7 +32,7 @@ export default function ScrollToHeroButton() {
         >
         <button
             onClick={scrollToHero}
-            className="btn btn-primary w-12 h-12 lg:w-14 lg:h-14 transform transition-transform duration-300 hover:scale-105 active:scale-95 shadow-lg"
+            className="btn btn-info text-white w-12 h-12 lg:w-14 lg:h-14 transform transition-transform duration-300 hover:scale-105 active:scale-95 shadow-lg"
         >
             <ArrowUp className="w-5 h-5 lg:w-6 lg:h-6" />
         </button>

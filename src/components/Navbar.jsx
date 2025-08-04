@@ -1,39 +1,56 @@
 import { Contact, FileUser, FolderOpenDot, House, Library, UserSearch } from "lucide-react";
 import DarkMode from "./DarkMode";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 function Navbar() {
-  const [activeNav, setActiveNav] = useState(window.location.hash || '#hero');
+  const [activeNav, setActiveNav] = useState('#hero');
+  const observer = useRef(null);
 
   useEffect(() => {
-    const handleHashChange = () => {
-      setActiveNav(window.location.hash || '#hero');
-    };
+    observer.current = new IntersectionObserver((entries) => {
+      const visibleSection = entries.find((entry) => entry.isIntersecting)?.target;
+      if (visibleSection) {
+        setActiveNav(`#${visibleSection.id}`);
+      }
+    }, { threshold: 0.5 }); 
 
-    window.addEventListener('hashchange', handleHashChange);
+    const sections = document.querySelectorAll('section');
+    sections.forEach((section) => {
+      observer.current.observe(section);
+    });
 
     return () => {
-      window.removeEventListener('hashchange', handleHashChange);
+      sections.forEach((section) => {
+        observer.current.unobserve(section);
+      });
     };
   }, []);
+
+  const handleNavClick = (nav) => {
+    setActiveNav(nav);
+    const section = document.querySelector(nav);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
   
   return (
     <>
       <div className="hidden md:flex fixed bottom-4 left-1/2 transform -translate-x-1/2 justify-center items-center gap-5 z-50 mb-5">
         <div 
-          className="tooltip rounded-full bg-base-200/30 backdrop-blur-lg mx-auto justify-center w-13 h-13 shadow-lg" 
+          className="tooltip rounded-full mx-auto justify-center w-13 h-13 shadow-lg bg-blue-950/40 backdrop-blur-lg border border-white/20 text-white" 
           data-tip="View Resume"
         >
           <a href="/Coroza_Jehus_Resume.pdf" target="_blank" rel="noopener noreferrer" className="menu menu-md flex items-center justify-center w-12 h-12 mx-auto rounded-full">
             <FileUser />
           </a>
         </div>
-        <ul className="menu menu-horizontal bg-base-200/30 backdrop-blur-lg rounded-full w-80 gap-4 mx-auto justify-center shadow-lg">
+        <ul className="gap-9 w-80 mx-auto justify-center flex items-center bg-blue-950/40 backdrop-blur-lg rounded-full border border-white/20 shadow-lg py-2 text-white">
           <li>
             <a
               href="#hero"
-              onClick={() => setActiveNav('#hero')}
-              className={`tooltip rounded-full ${activeNav === '#hero' ? 'bg-gray-600 text-white' : ''}`}
+              onClick={() => handleNavClick('#hero')}
+              className={`tooltip rounded-full transition-all duration-300 ease-in-out transform hover:scale-110 ${activeNav === '#hero' ? 'bg-gray-600 p-1 text-white scale-110' : ''}`}
               data-tip="Home"
             >
               <House />
@@ -42,8 +59,8 @@ function Navbar() {
           <li>
             <a
               href="#about"
-              onClick={() => setActiveNav('#about')}
-              className={`tooltip rounded-full ${activeNav === '#about' ? 'bg-gray-600 text-white' : ''}`}
+              onClick={() => handleNavClick('#about')}
+              className={`tooltip rounded-full transition-all duration-300 ease-in-out transform hover:scale-110 ${activeNav === '#about' ? 'bg-gray-600 p-1 text-white scale-110' : ''}`}
               data-tip="About"
             >
               <UserSearch />
@@ -52,9 +69,9 @@ function Navbar() {
           <li>
             <a
               href="#skills"
-              onClick={() => setActiveNav('#skills')}
-              className={`tooltip rounded-full ${activeNav === '#skills' ? 'bg-gray-600 text-white' : ''}`}
-              data-tip="Skills and Services"
+              onClick={() => handleNavClick('#skills')}
+              className={`tooltip rounded-full transition-all duration-300 ease-in-out transform hover:scale-110 ${activeNav === '#skills' ? 'bg-gray-600 p-1 text-white scale-110' : ''}`}
+              data-tip="Skills"
             >
               <Library />
             </a>
@@ -62,8 +79,8 @@ function Navbar() {
           <li>
             <a
               href="#projects"
-              onClick={() => setActiveNav('#projects')}
-              className={`tooltip rounded-full ${activeNav === '#projects' ? 'bg-gray-600 text-white' : ''}`}
+              onClick={() => handleNavClick('#projects')}
+              className={`tooltip rounded-full transition-all duration-300 ease-in-out transform hover:scale-110 ${activeNav === '#projects' ? 'bg-gray-600 p-1 text-white scale-110' : ''}`}
               data-tip="Projects"
             >
               <FolderOpenDot />
@@ -72,8 +89,8 @@ function Navbar() {
           <li>
             <a
               href="#contact"
-              onClick={() => setActiveNav('#contact')}
-              className={`tooltip rounded-full ${activeNav === '#contact' ? 'bg-gray-600 text-white' : ''}`}
+              onClick={() => handleNavClick('#contact')}
+              className={`tooltip rounded-full transition-all duration-300 ease-in-out transform hover:scale-110 ${activeNav === '#contact' ? 'bg-gray-600 p-1 text-white scale-110' : ''}`}
               data-tip="Contact"
             >
               <Contact />
