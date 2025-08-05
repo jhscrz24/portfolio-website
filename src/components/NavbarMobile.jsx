@@ -2,46 +2,61 @@ import React, { useState, useEffect, useRef } from 'react';
 import { House, UserSearch, Library, FolderOpenDot, Contact, FileUser } from 'lucide-react';
 import DarkMode from './DarkMode';
 
+const navLinks = [
+  { href: '#hero', icon: <House />, label: 'Home' },
+  { href: '#about', icon: <UserSearch />, label: 'About' },
+  { href: '#skills', icon: <Library />, label: 'Skills' },
+  { href: '#projects', icon: <FolderOpenDot />, label: 'Projects' },
+  { href: '#contact', icon: <Contact />, label: 'Contact' },
+];
+
 const NavbarMobile = () => {
   const [activeNav, setActiveNav] = useState('#hero');
   const [isVisible, setIsVisible] = useState(false);
   const observer = useRef(null);
+  const heroObserver = useRef(null);
 
   useEffect(() => {
-    observer.current = new IntersectionObserver((entries) => {
-      const visibleSection = entries.find((entry) => entry.isIntersecting)?.target;
-      if (visibleSection) {
-        setActiveNav(`#${visibleSection.id}`);
-      }
-    }, { threshold: 0.5 });
+    const sections = document.querySelectorAll('#hero, #about, #skills, #projects, #contact');
+    
+    const handleIntersect = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveNav(`#${entry.target.id}`);
+        }
+      });
+    };
 
-    const sections = document.querySelectorAll('section');
+    observer.current = new IntersectionObserver(handleIntersect, { threshold: 0.2 });
+
     sections.forEach((section) => {
-      if (observer.current) {
+      if (section) {
         observer.current.observe(section);
       }
     });
 
+    const heroElement = document.getElementById('hero');
+    if (heroElement) {
+      heroObserver.current = new IntersectionObserver(
+        (entries) => {
+          const [entry] = entries;
+          setIsVisible(!entry.isIntersecting);
+        },
+        { rootMargin: '-100px 0px 0px 0px' }
+      );
+      heroObserver.current.observe(heroElement);
+    }
+
     return () => {
       sections.forEach((section) => {
-        if (observer.current) {
+        if (observer.current && section) {
           observer.current.unobserve(section);
         }
       });
-    };
-  }, []);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const hero = document.getElementById("hero");
-      if (hero) {
-        const heroBottom = hero.offsetTop + hero.offsetHeight;
-        setIsVisible(window.scrollY > heroBottom - 100);
+      if (heroObserver.current && heroElement) {
+        heroObserver.current.unobserve(heroElement);
       }
     };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const handleNavClick = (nav) => {
@@ -51,12 +66,21 @@ const NavbarMobile = () => {
     }
   };
 
+  const navLinkClasses = (nav) =>
+    `transform transition-all duration-300 hover:scale-110 ${
+      activeNav === nav ? 'dock-active' : ''
+    }`;
+
+  const floatingButtonClasses = `tooltip rounded-full mx-auto justify-center items-center w-13 h-13 fixed bottom-4 right-4 z-50 shadow-lg transition-all duration-500 ease-in-out bg-blue-950/40 backdrop-blur-lg border border-white/20 text-white ${
+    isVisible
+      ? 'opacity-100 pointer-events-auto transform scale-100'
+      : 'opacity-0 pointer-events-none transform scale-50'
+  }`;
+
   return (
     <div className="md:hidden">
       <div
-        className={`tooltip rounded-full mx-auto justify-center items-center w-13 h-13 fixed bottom-4 right-4 mb-48 z-50 shadow-lg transition-all duration-500 ease-in-out bg-blue-950/40 backdrop-blur-lg border border-white/20 text-white ${
-          isVisible ? "opacity-100 pointer-events-auto transform scale-100" : "opacity-0 pointer-events-none transform scale-50"
-        }`}
+        className={`${floatingButtonClasses} mb-48`}
         data-tip="Resume"
       >
         <a
@@ -70,37 +94,31 @@ const NavbarMobile = () => {
       </div>
       <div
         className={`fixed bottom-4 right-4 mb-32 z-50 transition-all duration-500 ease-in-out ${
-          isVisible ? "opacity-100 pointer-events-auto transform scale-100" : "opacity-0 pointer-events-none transform scale-50"
+          isVisible
+            ? 'opacity-100 pointer-events-auto transform scale-100'
+            : 'opacity-0 pointer-events-none transform scale-50'
         }`}
       >
         <DarkMode />
       </div>
-      <div className="dock flex">
-        <a href="#hero" onClick={(e) => { e.preventDefault(); handleNavClick('#hero'); }} className={`transform transition-all duration-300 hover:scale-110 ${activeNav === '#hero' ? 'dock-active' : ''}`}>
-          <House />
-          <span className="dock-label mb-2 transition-opacity duration-300">Home</span>
-        </a>
-
-        <a href="#about" onClick={(e) => { e.preventDefault(); handleNavClick('#about'); }} className={`transform transition-all duration-300 hover:scale-110 ${activeNav === '#about' ? 'dock-active' : ''}`}>
-          <UserSearch />
-          <span className="dock-label mb-2 transition-opacity duration-300">About</span>
-        </a>
-
-        <a href="#skills" onClick={(e) => { e.preventDefault(); handleNavClick('#skills'); }} className={`transform transition-all duration-300 hover:scale-110 ${activeNav === '#skills' ? 'dock-active' : ''}`}>
-          <Library />
-          <span className="dock-label mb-2 transition-opacity duration-300">Skills</span>
-        </a>
-
-        <a href="#projects" onClick={(e) => { e.preventDefault(); handleNavClick('#projects'); }} className={`transform transition-all duration-300 hover:scale-110 ${activeNav === '#projects' ? 'dock-active' : ''}`}>
-          <FolderOpenDot />
-          <span className="dock-label mb-2 transition-opacity duration-300">Projects</span>
-        </a>
-
-        <a href="#contact" onClick={(e) => { e.preventDefault(); handleNavClick('#contact'); }} className={`transform transition-all duration-300 hover:scale-110 ${activeNav === '#contact' ? 'dock-active' : ''}`}>
-          <Contact />
-          <span className="dock-label mb-2 transition-opacity duration-300">Contact</span>
-        </a>
-      </div>
+      <nav className="dock flex">
+        {navLinks.map((link) => (
+          <a
+            key={link.href}
+            href={link.href}
+            onClick={(e) => {
+              e.preventDefault();
+              handleNavClick(link.href);
+            }}
+            className={navLinkClasses(link.href)}
+          >
+            {link.icon}
+            <span className="dock-label mb-2 transition-opacity duration-300">
+              {link.label}
+            </span>
+          </a>
+        ))}
+      </nav>
     </div>
   );
 };

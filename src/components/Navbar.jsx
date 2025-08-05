@@ -7,26 +7,33 @@ function Navbar() {
   const observer = useRef(null);
 
   useEffect(() => {
-    observer.current = new IntersectionObserver((entries) => {
-      const visibleSection = entries.find((entry) => entry.isIntersecting)?.target;
-      if (visibleSection) {
-        setActiveNav(`#${visibleSection.id}`);
-      }
-    }, { threshold: 0.5 }); 
+    const sections = document.querySelectorAll('section[id]');
+    
+    const handleIntersect = (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && entry.intersectionRatio >= 0.2) {
+          setActiveNav(`#${entry.target.id}`);
+        }
+      });
+    };
 
-    const sections = document.querySelectorAll('section');
+    observer.current = new IntersectionObserver(handleIntersect, { threshold: 0.2 });
+
     sections.forEach((section) => {
       observer.current.observe(section);
     });
 
     return () => {
       sections.forEach((section) => {
-        observer.current.unobserve(section);
+        if (observer.current) {
+          observer.current.unobserve(section);
+        }
       });
     };
   }, []);
 
-  const handleNavClick = (nav) => {
+  const handleNavClick = (e, nav) => {
+    e.preventDefault();
     setActiveNav(nav);
     const section = document.querySelector(nav);
     if (section) {
@@ -34,6 +41,14 @@ function Navbar() {
     }
   };
   
+  const navItems = [
+    { href: "#hero", icon: <House />, tip: "Home" },
+    { href: "#about", icon: <UserSearch />, tip: "About" },
+    { href: "#skills", icon: <Library />, tip: "Skills" },
+    { href: "#projects", icon: <FolderOpenDot />, tip: "Projects" },
+    { href: "#contact", icon: <Contact />, tip: "Contact" },
+  ];
+
   return (
     <>
       <div className="hidden md:flex fixed bottom-4 left-1/2 transform -translate-x-1/2 justify-center items-center gap-5 z-50 mb-5">
@@ -45,57 +60,19 @@ function Navbar() {
             <FileUser />
           </a>
         </div>
-        <ul className="gap-9 w-80 mx-auto justify-center flex items-center bg-blue-950/40 backdrop-blur-lg rounded-full border border-white/20 shadow-lg py-2 text-white">
-          <li>
-            <a
-              href="#hero"
-              onClick={() => handleNavClick('#hero')}
-              className={`tooltip rounded-full transition-all duration-300 ease-in-out transform hover:scale-110 ${activeNav === '#hero' ? 'bg-gray-600 p-1 text-white scale-110' : ''}`}
-              data-tip="Home"
-            >
-              <House />
-            </a>
-          </li>
-          <li>
-            <a
-              href="#about"
-              onClick={() => handleNavClick('#about')}
-              className={`tooltip rounded-full transition-all duration-300 ease-in-out transform hover:scale-110 ${activeNav === '#about' ? 'bg-gray-600 p-1 text-white scale-110' : ''}`}
-              data-tip="About"
-            >
-              <UserSearch />
-            </a>
-          </li>
-          <li>
-            <a
-              href="#skills"
-              onClick={() => handleNavClick('#skills')}
-              className={`tooltip rounded-full transition-all duration-300 ease-in-out transform hover:scale-110 ${activeNav === '#skills' ? 'bg-gray-600 p-1 text-white scale-110' : ''}`}
-              data-tip="Skills"
-            >
-              <Library />
-            </a>
-          </li>
-          <li>
-            <a
-              href="#projects"
-              onClick={() => handleNavClick('#projects')}
-              className={`tooltip rounded-full transition-all duration-300 ease-in-out transform hover:scale-110 ${activeNav === '#projects' ? 'bg-gray-600 p-1 text-white scale-110' : ''}`}
-              data-tip="Projects"
-            >
-              <FolderOpenDot />
-            </a>
-          </li>
-          <li>
-            <a
-              href="#contact"
-              onClick={() => handleNavClick('#contact')}
-              className={`tooltip rounded-full transition-all duration-300 ease-in-out transform hover:scale-110 ${activeNav === '#contact' ? 'bg-gray-600 p-1 text-white scale-110' : ''}`}
-              data-tip="Contact"
-            >
-              <Contact />
-            </a>
-          </li>
+        <ul className="gap-9 w-auto px-8 mx-auto justify-center flex items-center bg-blue-950/40 backdrop-blur-lg rounded-full border border-white/20 shadow-lg py-2 text-white">
+          {navItems.map((item) => (
+            <li key={item.href}>
+              <a
+                href={item.href}
+                onClick={(e) => handleNavClick(e, item.href)}
+                className={`tooltip rounded-full transition-all duration-300 ease-in-out transform hover:scale-110 ${activeNav === item.href ? 'bg-gray-600 p-1 text-white scale-110' : ''}`}
+                data-tip={item.tip}
+              >
+                {item.icon}
+              </a>
+            </li>
+          ))}
         </ul>
 
         <DarkMode />
