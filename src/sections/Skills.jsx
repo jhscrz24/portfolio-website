@@ -15,7 +15,7 @@ export default function Skills() {
             I have skills in full-stack development, handling both front-end and back-end for web and mobile applications. I also have experience in database management, complemented by a background in UI/UX design, and project management.
           </p>
           <div className="divider"></div>
-          <div className="flex flex-wrap justify-center gap-6 md:gap-10">
+          <div className="flex flex-wrap justify-center gap-6 md:gap-15">
             <div className="card bg-base-400 w-full sm:w-[20rem] md:w-[22rem] p-8 shadow-2xl border-b-6 border-[#00bafe]">
               <div className="card-body">
                 <div className="flex flex-col items-center text-center mb-5">

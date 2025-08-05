@@ -73,7 +73,7 @@ export default function Projects() {
                   alt="Album" />
               </figure>
               <div className="card-body w-full">
-                <h2 className="card-title text-3xl font-stretch-extra-condensed font-normal">Teacher-Led Multimodal Web Learning Application</h2>
+                <h2 className="card-title text-3xl font-stretch-extra-condensed font-normal">SAYAP: Teacher-Led Multimodal Web Learning Application</h2>
                 <div className='divider'></div>
                 <p className="text-justify text-lg">As a team, we developed the Teacher-Led Multimodal Web Learning Application, a web-based platform for Sta. Filomena Integrated School designed to make Araling Panlipunan lessons more engaging. The system features gamified activities, 3D polarized videos, and QR-based student identification for tracking points and activity history. With a teacher-only account system for managing content and records, we integrated AWS S3 and CloudFront to ensure secure and efficient media handling, delivering an interactive and immersive learning experience.</p>
                 <div className="card-actions justify-center md:justify-end mt-3">
