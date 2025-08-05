@@ -1,5 +1,4 @@
 import { Github, Link } from 'lucide-react'
-import React from 'react'
 
 export default function Projects() {
   return (
@@ -16,7 +15,7 @@ export default function Projects() {
             <div className="card lg:card-side shadow-2xl">
               <figure> 
                 <img
-                  src="/images/realtime-chat.png"
+                  src="./images/realtime-chat.png"
                   alt="Album" />
               </figure>
               <div className="card-body w-full">
@@ -41,7 +40,7 @@ export default function Projects() {
             <div className="card lg:card-side shadow-2xl">
               <figure className='md:hidden'> 
                 <img
-                  src="/images/recipe-finder.png"
+                  src="./images/recipe-finder.png"
                   alt="Album" 
                   className='md:hidden' />
               </figure>
@@ -59,7 +58,7 @@ export default function Projects() {
               </div>
               <figure> 
                 <img
-                  src="/images/recipe-finder.png"
+                  src="./images/recipe-finder.png"
                   alt="Album"
                   className="hidden md:block"
                   />
@@ -69,7 +68,7 @@ export default function Projects() {
             <div className="card lg:card-side shadow-2xl mb-5">
               <figure> 
                 <img
-                  src="/images/sayap.png"
+                  src="./images/sayap.png"
                   alt="Album" />
               </figure>
               <div className="card-body w-full">

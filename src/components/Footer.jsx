@@ -6,7 +6,7 @@ function Footer() {
     <div className="divider px-10"></div>
     <footer className="footer px-10 flex justify-between sm:px-15 footer-horizontal p-7 mb-15">
       <aside className="flex items-center gap-4">
-        <img src="/images/my-logo.png" alt="my-logo" className="w-15 rounded-full" />
+        <img src="./images/my-logo.png" alt="my-logo" className="w-15 rounded-full" />
         <p className="w-50 md:w-full">
           Thanks for visiting my portfolio! 
           <br />

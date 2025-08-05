@@ -25,11 +25,11 @@ export default function Hero() {
   const imageUrl =
     theme === 'light'
       ? isMobile
-        ? '/images/hero-light-mobile.png'
-        : '/images/hero-light.png'
+        ? './images/hero-light-mobile.png'
+        : './images/hero-light.png'
       : isMobile
-        ? '/images/hero-dark-mobile.png'
-        : '/images/hero-dark.png';
+        ? './images/hero-dark-mobile.png'
+        : './images/hero-dark.png';
 
   return (
     <section
@@ -58,7 +58,7 @@ export default function Hero() {
               grow and support team success.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto animate-fade-in-up transition-all duration-500 delay-600">
-              <a href="/Coroza_Jehus_Resume.pdf" target="_blank" rel="noopener noreferrer">
+              <a href="./Coroza_Jehus_Resume.pdf" target="_blank" rel="noopener noreferrer">
                 <button className="btn btn-info text-white w-30 md:w-full sm:w-auto transform transition-transform duration-300 hover:scale-105 active:scale-95">
                   View Resume
                 </button>

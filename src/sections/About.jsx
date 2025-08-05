@@ -5,7 +5,7 @@ export default function About() {
           <div className="hero-content flex-col lg:flex-row-reverse gap-20">
             <div className="lg:w-1/2">
                 <img
-                  src="/images/about.png"
+                  src="./images/about.png"
                   alt="About Me"
                   className="md:hidden mb-8 w-full max-w-sm rounded-xl border-15 text-white shadow-2xl transform transition-transform duration-500 hover:scale-105"
                 />
@@ -23,7 +23,7 @@ export default function About() {
                       <input type="radio" name="my-accordion-2" defaultChecked />
                       <div className="collapse-title font-semibold">Educational Background</div>
                       <div className="collapse-content flex items-center gap-3">
-                        <img src="/images/lspu-logo.png" alt="lspu-logo" className="w-15 mx-5" />
+                        <img src="./images/lspu-logo.png" alt="lspu-logo" className="w-15 mx-5" />
                         <div>
                           <h1 className="font-bold text-md mb-1">Laguna State Polytechnic University <div className="badge badge-info">San Pablo City Campus</div></h1>
                           <p className="italic text-sm text-gray-500 mb-1">2021 - 2025</p>
@@ -36,7 +36,7 @@ export default function About() {
                       <input type="radio" name="my-accordion-2" defaultChecked />
                       <div className="collapse-title font-semibold">Work Experience</div>
                       <div className="collapse-content flex gap-3">
-                        <img src="/images/gleent-logo.png" alt="gleent-logo" className="w-15 h-15 mx-5 rounded-full" />
+                        <img src="./images/gleent-logo.png" alt="gleent-logo" className="w-15 h-15 mx-5 rounded-full" />
                         <div>
                           <h1 className="font-bold text-md">Gleent Inc.</h1>
                           <p className="italic text-sm text-gray-500 mb-2">Laravel Frontend Intern (2025)</p>
@@ -47,7 +47,7 @@ export default function About() {
                 </div>
             </div>
             <img
-              src="/images/about.png"
+              src="./images/about.png"
               alt="About Me"
               className="hidden md:block w-full max-w-sm rounded-xl border-15 text-white shadow-2xl transform transition-transform duration-500 hover:scale-105"
             />

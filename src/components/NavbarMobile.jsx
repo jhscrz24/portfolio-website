@@ -60,7 +60,7 @@ const NavbarMobile = () => {
         data-tip="Resume"
       >
         <a
-          href="/Coroza_Jehus_Resume.pdf"
+          href="./Coroza_Jehus_Resume.pdf"
           target="_blank"
           rel="noopener noreferrer"
           className="menu menu-md flex items-center justify-center w-12 h-12 rounded-full"

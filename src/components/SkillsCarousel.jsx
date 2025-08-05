@@ -1,18 +1,18 @@
 export default function SkillsCarousel() {
   const skills = [
-    { src: "/icons/vscode.png", alt: "VScode" },
-    { src: "/icons/html.png", alt: "HTML" },
-    { src: "/icons/css.png", alt: "CSS" },
-    { src: "/icons/javascript.png", alt: "JS" },
-    { src: "/icons/react.png", alt: "React" },
-    { src: "/icons/mongodb.png", alt: "MongoDB" },
-    { src: "/icons/nodejs.png", alt: "Nodejs" },
-    { src: "/icons/mysql.png", alt: "MySQL" },
-    { src: "/icons/xxamp.png", alt: "Xamp" },
-    { src: "/icons/tailwind.png", alt: "Tailwind" },
-    { src: "/icons/bootstrap.png", alt: "Bootstrap" },
-    { src: "/icons/github.png", alt: "Github" },
-    { src: "/icons/microsoft.png", alt: "MS" },
+    { src: "./icons/vscode.png", alt: "VScode" },
+    { src: "./icons/html.png", alt: "HTML" },
+    { src: "./icons/css.png", alt: "CSS" },
+    { src: "./icons/javascript.png", alt: "JS" },
+    { src: "./icons/react.png", alt: "React" },
+    { src: "./icons/mongodb.png", alt: "MongoDB" },
+    { src: "./icons/nodejs.png", alt: "Nodejs" },
+    { src: "./icons/mysql.png", alt: "MySQL" },
+    { src: "./icons/xxamp.png", alt: "Xamp" },
+    { src: "./icons/tailwind.png", alt: "Tailwind" },
+    { src: "./icons/bootstrap.png", alt: "Bootstrap" },
+    { src: "./icons/github.png", alt: "Github" },
+    { src: "./icons/microsoft.png", alt: "MS" },
   ];
 
   return (

@@ -41,7 +41,7 @@ function Navbar() {
           className="tooltip rounded-full mx-auto justify-center w-13 h-13 shadow-lg bg-blue-950/40 backdrop-blur-lg border border-white/20 text-white" 
           data-tip="View Resume"
         >
-          <a href="/Coroza_Jehus_Resume.pdf" target="_blank" rel="noopener noreferrer" className="menu menu-md flex items-center justify-center w-12 h-12 mx-auto rounded-full">
+          <a href="./Coroza_Jehus_Resume.pdf" target="_blank" rel="noopener noreferrer" className="menu menu-md flex items-center justify-center w-12 h-12 mx-auto rounded-full">
             <FileUser />
           </a>
         </div>
