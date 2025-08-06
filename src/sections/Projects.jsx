@@ -1,5 +1,5 @@
-import { useEffect, useState, useRef } from 'react';
 import { Github, Link } from 'lucide-react';
+import { useEffect, useState, useRef } from 'react';
 
 export default function Projects() {
   const [isVisible, setIsVisible] = useState(false);

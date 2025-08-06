@@ -1,6 +1,6 @@
+import SkillsCarousel from "../components/SkillsCarousel";
 import { useEffect, useState, useRef } from 'react';
 import { Database, SquareChartGantt, SquareCode } from "lucide-react";
-import SkillsCarousel from "../components/SkillsCarousel";
 
 export default function Skills() {
   const [isVisible, setIsVisible] = useState(false);
